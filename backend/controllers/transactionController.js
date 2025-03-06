@@ -2,6 +2,7 @@ import Transaction from "../models/transaction.js";
 import asyncHandler from "express-async-handler";
 import Budget from "../models/budget.js";
 import Notification from "../models/notifications.js";
+import { autoAllocateSavings } from "./goalController.js";
 
 //Create a new transaction
 export const addTransaction = asyncHandler(async (req, res) => {
@@ -46,6 +47,12 @@ export const addTransaction = asyncHandler(async (req, res) => {
             }
         }
     }
+
+    //// 🔹 Automatically allocate savings if this is an income transaction - GOALS
+    if (type === "income") {
+        await autoAllocateSavings(req.user._id, amount);
+    }
+
 
     res.status(201).json(savedTransaction);
 });
