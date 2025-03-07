@@ -7,6 +7,8 @@ import "./cronJobs.js" //Starts the scheduler
 import notificationRoutes from "./routes/notificationRoutes.js";
 import budgetRoutes from "./routes/budgetRoutes.js"
 import goalRoutes from "./routes/goalRoutes.js";
+import reportRoutes from "./routes/reportRoutes.js";
+
 
 dotenv.config();
 
@@ -19,6 +21,7 @@ app.use("/api/transactions", transactionRoutes);
 app.use("/api/notifications", notificationRoutes);
 app.use("/api/budgets", budgetRoutes);
 app.use("/api/goals", goalRoutes);
+app.use("/api/reports", reportRoutes);
 
 
 app.listen(5000, () => {

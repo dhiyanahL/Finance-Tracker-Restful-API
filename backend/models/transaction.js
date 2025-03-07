@@ -12,7 +12,8 @@ const transactionSchema = new mongoose.Schema({
     date:{ type: Date, default: Date.now},
     recurring: {type:Boolean, default: false},
     recurrencePattern: {type: String, enum: ["daily","weekly","monthly","yearly"], default: null},
-    lastProcessDate: {type: Date, default: null} //Tracks last occurrence
+    lastProcessDate: {type: Date, default: null}, //Tracks last occurrence
+    currency: { type: String, default: "LKR" } // ✅ Default currency set to LKR
 });
 
 const Transaction = mongoose.model("Transaction", transactionSchema);
