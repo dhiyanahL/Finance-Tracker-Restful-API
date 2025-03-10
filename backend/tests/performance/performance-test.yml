@@ -1,0 +1,20 @@
+config:
+  target: "http://localhost:5000" # Your API base URL
+  phases:
+    - duration: 60 # Test duration in seconds
+      arrivalRate: 5 # Number of requests per second to send during the test
+
+scenarios:
+  - flow:
+      - get:
+          url: "/api/transactions" # Replace with the endpoint you want to test
+      - post:
+          url: "/api/transactions" # Replace with the endpoint you want to test
+          json:
+            type: "expense"
+            amount: 500
+            category: "Groceries"
+            date: "2025-02-27"
+            recurring: true
+            recurrencePattern: "weekly"
+            currency: "LKR"

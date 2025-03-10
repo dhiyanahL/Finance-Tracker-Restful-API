@@ -234,5 +234,5 @@ export const deleteTransaction = asyncHandler(async (req, res) => {
         throw new Error("Transaction not found");
     }
     await transaction.deleteOne();
-    res.json({ message: "Transaction deleted successfully" });
+    res.status(200).json({ message: "Transaction deleted successfully" });
 });
