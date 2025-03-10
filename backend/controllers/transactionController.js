@@ -75,7 +75,7 @@ export const addTransaction = asyncHandler(async (req, res) => {
                 nextDueDate = new Date(lastProcess.setMonth(lastProcess.getMonth() + 1));
                 break;
             default:
-                nextDueDate = lastProcess; // If no recurrence pattern, just use lastProcessDate
+                nextDueDate = lastProcess; // If no recurrence pattern, we just use lastProcessDate
                 break;
         }
 

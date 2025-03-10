@@ -16,7 +16,7 @@ describe("Budget & Transaction Integration", () => {
     let budgetId;
 
     beforeAll(async () => {
-        jest.setTimeout(10000); //increase the timeout 
+        jest.setTimeout(10000); //increase the timeout so test doesn't stop randomly
 
         await mongoose.connect(process.env.TEST_MONGO_URI, {
             useNewUrlParser: true,

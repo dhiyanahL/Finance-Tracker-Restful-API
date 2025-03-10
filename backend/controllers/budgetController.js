@@ -37,34 +37,6 @@ export const getBudgets = asyncHandler(async(req,res) => {
 });
 
 
-// ✅ Check Budget Status Based on Transactions
-/*export const checkBudgetStatus = asyncHandler(async (req, res) => {
-    const budgets = await Budget.find({ user: req.user._id });
-
-    for (const budget of budgets) {
-        // Get total spent in this category
-        const totalSpent = await Transaction.aggregate([
-            { $match: { user: req.user._id, category: budget.category, type: "expense" } },
-            { $group: { _id: null, total: { $sum: "$amount" } } }
-        ]);
-
-        budget.used = totalSpent.length > 0 ? totalSpent[0].total : 0;
-        await budget.save();
-
-        // 🔔 Send notification if budget exceeded
-        if (budget.notifications && budget.used >= budget.limit) {
-            await Notification.create({
-                user: req.user._id,
-                message: `⚠️ Budget alert: You have exceeded your ${budget.category} budget of $${budget.limit}.`,
-                type: "budget",
-                seen: false
-            });
-        }
-    }
-
-    res.json(budgets);
-});*/
-
 export const checkBudgetStatus = asyncHandler(async (req, res) => {
     const budgets = await Budget.find({ user: req.user._id });
 

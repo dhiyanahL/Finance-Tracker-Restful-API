@@ -34,9 +34,9 @@ describe("Goal Controller - updateGoal", () => {
 
         await updateGoal(req, res);
 
-        expect(Goal.findById).toHaveBeenCalledWith(mockGoalId); // ✅ Ensure findById is called with correct ID
-        expect(mockGoal.save).toHaveBeenCalled(); // ✅ Ensure save is called
-        expect(res.status).toHaveBeenCalledTimes(1); // ✅ Ensure status is called exactly once
+        expect(Goal.findById).toHaveBeenCalledWith(mockGoalId); // Ensure findById is called with correct ID
+        expect(mockGoal.save).toHaveBeenCalled(); // Ensure save is called
+        expect(res.status).toHaveBeenCalledTimes(1); // Ensure status is called exactly once
         expect(res.status).toHaveBeenCalledWith(200); 
         expect(res.json).toHaveBeenCalledWith({ message: "Goal updated successfully", goal: { name: "New Goal Name", targetAmount: 5000 } });
     });
@@ -74,7 +74,7 @@ describe("Goal Controller - updateGoal", () => {
 
         await updateGoal(req, res);
 
-        expect(res.status).toHaveBeenCalledWith(400); // ✅ Ensure 400 is returned for validation failure
+        expect(res.status).toHaveBeenCalledWith(400); // Ensure 400 is returned for validation failure
         expect(res.json).toHaveBeenCalledWith({ message: "Invalid goal data" });
     });
 });

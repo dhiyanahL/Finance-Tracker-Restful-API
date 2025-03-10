@@ -8,7 +8,6 @@ import {
     deleteUser,
 } from "../controllers/userController.js";
 
-
 const router = express.Router();
 
 //Public routes (No auth required)
@@ -21,7 +20,7 @@ router.post("/", protect, admin, createUser); // Only admin can create a user
 router.put("/:id", protect, updateUser); //User can update their profile
 router.delete("/:id", protect, admin, deleteUser); // Only admin can delete users
 
-// Protected route (Example: Get user profile)
+// Protected route to get user profile
 router.get("/profile", protect, (req, res) => {
     res.json(req.user);
 });

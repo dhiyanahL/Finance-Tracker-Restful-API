@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
 
-
 export const connectDB = async () => {
     try {
         const dbUri = process.env.NODE_ENV === 'test' ? process.env.TEST_MONGO_URI : process.env.MONGO_URI;
@@ -29,18 +28,5 @@ export const connectDB = async () => {
 };
 
 
-/*export const connectDB = async () => {
-    try {
-      console.log("MONGO_URI:", process.env.MONGO_URI);  // Log the value of MONGO_URI
-      //const conn = await mongoose.connect(process.env.MONGO_URI);
-      await mongoose.connect(process.env.MONGO_URI);
-      
-      console.log(`MongoDB Connected`);   
-    } catch (error) {
-      console.error(`Error: ${error.message}`);
-      process.exit(1); // 1 code means --> Exit process with failure
-      //0 code means --> Exit process with success
-    }
-  }
-*/
+
 

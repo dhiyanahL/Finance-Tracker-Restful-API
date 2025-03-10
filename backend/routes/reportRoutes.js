@@ -4,6 +4,8 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
+//4 different types of reports
+
 router.get("/budget", protect, getBudgetReport);  //Budget Utilization Report
 router.get("/income-expense", protect, getIncomeExpenseSummary);  //Income VS Expense Summary Report
 router.get("/category-expense", protect, getCategoryExpenseReport); //Category-wise Expense Report

@@ -31,8 +31,8 @@ describe("Transaction Controller - deleteTransaction", () => {
 
         await deleteTransaction(req, res);
 
-        expect(mockTransaction.deleteOne).toHaveBeenCalled(); // ✅ Ensure deleteOne is called
-        expect(res.status).toHaveBeenCalledTimes(1); // ✅ Ensure status is called exactly once
+        expect(mockTransaction.deleteOne).toHaveBeenCalled(); // Ensure deleteOne is called
+        expect(res.status).toHaveBeenCalledTimes(1); // Ensure status is called exactly once
         expect(res.status).toHaveBeenCalledWith(200);
         expect(res.json).toHaveBeenCalledWith({ message: "Transaction deleted successfully" });
     });
