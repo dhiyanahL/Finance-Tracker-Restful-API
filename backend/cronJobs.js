@@ -1,10 +1,10 @@
+import dotenv from "dotenv";
+dotenv.config();
 import cron from "node-cron";
 import Transaction from "./models/transaction.js";
 import Notification from "./models/notifications.js"
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 
-dotenv.config();
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 

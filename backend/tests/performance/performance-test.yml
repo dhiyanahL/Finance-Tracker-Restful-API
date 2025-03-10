@@ -1,5 +1,5 @@
 config:
-  target: "http://localhost:5000" # Your API base URL
+  target: "http://localhost:5000" # API base URL
   phases:
     - duration: 60 # Test duration in seconds
       arrivalRate: 5 # Number of requests per second to send during the test
@@ -7,9 +7,9 @@ config:
 scenarios:
   - flow:
       - get:
-          url: "/api/transactions" # Replace with the endpoint you want to test
+          url: "/api/transactions" 
       - post:
-          url: "/api/transactions" # Replace with the endpoint you want to test
+          url: "/api/transactions"
           json:
             type: "expense"
             amount: 500

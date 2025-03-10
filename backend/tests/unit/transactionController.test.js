@@ -5,7 +5,7 @@ import Transaction from "../../models/transaction.js";
 import { jest } from "@jest/globals";
 import mongoose from "mongoose";
 
-jest.mock("../models/Transaction.js");
+jest.mock("../../models/transaction.js");
 
 describe("Transaction Controller - deleteTransaction", () => {
     it("should delete a transaction successfully", async () => {

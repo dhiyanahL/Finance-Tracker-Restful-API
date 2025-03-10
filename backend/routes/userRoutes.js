@@ -8,6 +8,7 @@ import {
     deleteUser,
 } from "../controllers/userController.js";
 
+
 const router = express.Router();
 
 //Public routes (No auth required)

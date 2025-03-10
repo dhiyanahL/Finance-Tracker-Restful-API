@@ -27,8 +27,13 @@ export const addBudget = asyncHandler(async(req,res) => {
 
 //Get all budgets
 export const getBudgets = asyncHandler(async(req,res) => {
+
+    if (!req.user) {
+        return res.status(401).json({ message: "Not authorized, no token" });
+    }
+
     const budgets = await Budget.find({user : req.user._id});
-    res.json(budgets);
+    res.status(200).json(budgets);
 });
 
 
@@ -141,5 +146,6 @@ export const deleteBudget = asyncHandler(async(req,res) => {
     }
 
     await budget.deleteOne();
-    res.json({message: "Budget deleted successfully"});
+    res.status(200).json({ message: "Budget deleted successfully" });
+
 });

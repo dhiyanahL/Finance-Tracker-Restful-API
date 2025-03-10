@@ -1,5 +1,16 @@
-import express from "express";
 import dotenv from "dotenv";
+dotenv.config();
+
+
+// Conditionally load .env file based on environment 
+if (process.env.NODE_ENV === 'test') {
+    dotenv.config({ path: '.env.test' });  // Load test-specific environment variables
+  } else {
+    dotenv.config();  // Load default .env file for development or production
+  }
+
+
+import express from "express";
 import { connectDB } from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import transactionRoutes from "./routes/transactionRoutes.js";
@@ -9,8 +20,6 @@ import budgetRoutes from "./routes/budgetRoutes.js";
 import goalRoutes from "./routes/goalRoutes.js";
 import reportRoutes from "./routes/reportRoutes.js";
 import dashboardRoutes from "./routes/dashboardRoutes.js";
-
-dotenv.config();
 
 const app = express();
 
@@ -31,3 +40,5 @@ app.listen(5000, () => {
   }
   //console.log("Server is running on port 5000");
 });
+
+export default app; // Export the app here for testing

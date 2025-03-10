@@ -33,12 +33,19 @@ export const getGoals = asyncHandler(async(req,res) => {
 
 //Update a goal
 export const updateGoal = asyncHandler(async(req,res) => {
+
+     // Validate required fields
+     const { name, targetAmount } = req.body;
+     if (!name || !targetAmount) {
+         return res.status(400).json({ message: "Invalid goal data" }); // Return 400 if validation fails
+     }
+
     const goal = await Goal.findById(req.params.id);
     if(!goal || goal.user.toString() !== req.user._id.toString()){
         res.status(404);
         throw new Error("Goal not found");
     }
-    const {name, targetAmount, savedAmount, deadline, completed, autoSavePercentage} = req.body;
+    const { savedAmount, deadline, completed, autoSavePercentage} = req.body;
     goal.name = name || goal.name;
     goal.targetAmount = targetAmount || goal.targetAmount;
     goal.savedAmount = savedAmount || goal.savedAmount;
@@ -47,7 +54,7 @@ export const updateGoal = asyncHandler(async(req,res) => {
     goal.autoSavePercentage = req.body.autoSavePercentage ?? goal.autoSavePercentage; // Allow setting 0
 
     const updatedGoal = await goal.save();
-    res.json(updatedGoal);
+    res.status(200).json({message: "Goal updated successfully", goal: updatedGoal});
 });
 
 //Delete a goal
