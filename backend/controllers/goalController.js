@@ -64,7 +64,7 @@ export const deleteGoal = asyncHandler(async(req,res) => {
         res.status(404);
         throw new Error("Goal not found");
     }
-    await goal.remove();
+    await goal.deleteOne();
     res.json({message : "Goal removed"});
 });
 
