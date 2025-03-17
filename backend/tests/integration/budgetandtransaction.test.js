@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config();  
+dotenv.config();
 
 import request from "supertest";
 import app from "../../server.js";
@@ -16,12 +16,15 @@ describe("Budget & Transaction Integration", () => {
     let budgetId;
 
     beforeAll(async () => {
-        jest.setTimeout(10000); //increase the timeout so test doesn't stop randomly
+        jest.setTimeout(10000); // Increase the timeout so the test doesn't stop randomly
 
-        await mongoose.connect(process.env.TEST_MONGO_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        // Check if the connection is already established
+        if (mongoose.connection.readyState === 0) {
+            await mongoose.connect(process.env.TEST_MONGO_URI, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            });
+        }
 
         // Create test user and token
         const user = new User({ name: "Test User", email: "test@example.com", password: "password123" });
@@ -36,12 +39,13 @@ describe("Budget & Transaction Integration", () => {
         budgetId = budget._id;
     });
 
-    afterAll(async () => {
+    /*afterAll(async () => {
+        // Clean up test data
         await Budget.deleteMany({});
         await Transaction.deleteMany({});
         await User.deleteMany({});
         await mongoose.connection.close();
-    });
+    });*/
 
     test("Should update budget when a new transaction is added", async () => {
         // Add a transaction that affects the budget

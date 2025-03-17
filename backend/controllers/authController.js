@@ -3,7 +3,7 @@ import asyncHandler from "express-async-handler";
 
 //Register User
 export const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password,role } = req.body;
 
     //Check if user exists
     const userExists = await User.findOne({ email });
@@ -18,6 +18,7 @@ export const registerUser = asyncHandler(async (req, res) => {
         name,
         email,
         password,
+        role: role || "user", // ✅ Ensure role is assigned properly
     });
 
     if (user) {
