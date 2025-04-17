@@ -1,6 +1,6 @@
 ## Setting up the project :-
 
-1. git clone https://github.com/SE1020-IT2070-OOP-DSA-25/project-dhiyanahL.git
+1. git clone 
 
 2. install dependencies - npm install
 
