@@ -6,14 +6,6 @@
 
 3. run the server - npm run dev
 
-API End Points Documentation - (documented in Postman)
-
-## Postman Collections :-
-
-Link to the One Drive folder containing the exported Postman collections used for API Testing :-
-
-https://mysliit-my.sharepoint.com/:f:/g/personal/it22055262_my_sliit_lk/EgQj7t734rtHvX1IeFutAeYBSopDV3WhSmSgtrEdtqrvuQ?e=1z7n5a
-
 
 ## API End Points :-
 
